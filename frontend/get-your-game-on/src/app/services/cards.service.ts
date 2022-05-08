@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Card } from '../models/card';
 import { catchError, forkJoin, map, Observable, of } from 'rxjs';
+import { ApiCard } from '../models/api-card';
 
 @Injectable({ providedIn: 'root' })
 export class CardsService {
@@ -19,8 +20,8 @@ export class CardsService {
   public getNumberOfCards(numOfCardsPerRound: number): Observable<Card[]> {
     return forkJoin(
       new Array(numOfCardsPerRound).fill(undefined).map(() =>
-        this.httpClient.get(this.api).pipe(
-          map((apiCard: any) => {
+        this.httpClient.get<ApiCard>(this.api).pipe(
+          map((apiCard: ApiCard) => {
             return {
               id: apiCard.id,
               name: apiCard.name,
@@ -31,8 +32,8 @@ export class CardsService {
               level: apiCard.level,
               race: apiCard.race,
               attribute: apiCard.attribute,
-              sets: apiCard.card_sets,
-              imgUrl: apiCard.card_images[0].image_url,
+              sets: apiCard.sets,
+              imgUrl: apiCard.cardImages[0].imageUrl,
             };
           })
         )
