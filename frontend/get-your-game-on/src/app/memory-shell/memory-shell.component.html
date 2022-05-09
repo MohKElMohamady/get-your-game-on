@@ -1,0 +1,2 @@
+<score [currentScore]="currentScore" [bestScore]="bestScore"></score>
+<memory-corridor [cards]="(cardsForRound$ | async)" (selectedCard)="selectCard($event)"></memory-corridor>
