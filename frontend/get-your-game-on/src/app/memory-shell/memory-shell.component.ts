@@ -16,7 +16,7 @@ export class MemoryShellComponent implements OnInit {
   public currentScore : number = 0;
   public bestScore : number = 0;
   private readonly INITIAL_ROUND_CARD_NUMBER: number = 4;
-  private level : number = 1;
+  public level : number = 1;
   
   constructor(private cardsService: CardsService) {
     this.cardsForRound$ = this.cardsService.getNumberOfCards(
