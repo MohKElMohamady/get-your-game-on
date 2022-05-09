@@ -1,4 +1,4 @@
-import { CardImages } from "./card-images";
+import { CardImage } from "./card-images";
 import { CardPrice } from "./card-price";
 import { CardSet } from "./card-set";
 
@@ -12,7 +12,7 @@ export interface ApiCard{
     level : number;
     race : string;
     attribute : string;
-    sets : CardSet[];
-    cardImages : CardImages[];
-    cardPrices : CardPrice[];
+    card_sets : CardSet[];
+    card_images : CardImage[];
+    card_prices : CardPrice[];
 }

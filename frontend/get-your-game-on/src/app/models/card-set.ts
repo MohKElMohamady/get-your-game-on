@@ -1,7 +1,6 @@
 export interface CardSet{
-    name : string;
-    code : string;
-    rarity : string;
-    rarityCode : string;
-    price : number;
+    set_name : string;
+    set_code : string;
+    set_rarity : string;
+    set_price : string;
 }

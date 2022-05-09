@@ -11,7 +11,8 @@ export class CardsService {
   constructor(private httpClient: HttpClient) {}
 
   /*
-   * The forkJoin operator allows us of collect the 
+   * The forkJoin operator allows us of collect the returned observables of the multiple requests
+   * 
    */
 
   /* https://stackoverflow.com/questions/5501581/javascript-new-arrayn-and-array-prototype-map-weirdness */
@@ -20,8 +21,9 @@ export class CardsService {
   public getNumberOfCards(numOfCardsPerRound: number): Observable<Card[]> {
     return forkJoin(
       new Array(numOfCardsPerRound).fill(undefined).map(() =>
-        this.httpClient.get<ApiCard>(this.api).pipe(
-          map((apiCard: ApiCard) => {
+        this.httpClient.get<any>(this.api).pipe(
+          map((apiCard: any) => {
+            /* console.log(apiCard); */
             return {
               id: apiCard.id,
               name: apiCard.name,
@@ -33,7 +35,7 @@ export class CardsService {
               race: apiCard.race,
               attribute: apiCard.attribute,
               sets: apiCard.sets,
-              imgUrl: apiCard.cardImages[0].imageUrl,
+              imgUrl: apiCard.card_images[0].image_url,
             };
           })
         )

@@ -1,5 +1,6 @@
 export interface CardPrice{
-    marketPrice : number;
-    tcgPlayerPrice : number;
-    amazonPrice : number;
+    cardmarket_price : number;
+    tcgplayer_price : number;
+    ebay_price : number;
+    amazon_price : number;
 }
