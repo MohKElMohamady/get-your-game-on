@@ -17,7 +17,8 @@ export class MemoryShellComponent implements OnInit {
   public bestScore : number = 0;
   private readonly INITIAL_ROUND_CARD_NUMBER: number = 4;
   public level : number = 1;
-  
+  public isGameRunning : boolean = true;
+
   constructor(private cardsService: CardsService) {
     this.cardsForRound$ = this.cardsService.getNumberOfCards(
       this.INITIAL_ROUND_CARD_NUMBER * this.level
@@ -59,27 +60,8 @@ export class MemoryShellComponent implements OnInit {
        */
       console.log("Game over!");
       this.currentScore > this.bestScore ? this.bestScore = this.currentScore : null;
-      /*
-       * Reset the current score
-       */
-      this.currentScore = 0;
-      /*
-       * Reset the level
-       */
-      this.level = 1;
-      /*
-       * Reset the number of cards
-       */
-      this.cardsForRound$ = this.cardsService.getNumberOfCards(
-        this.INITIAL_ROUND_CARD_NUMBER * this.level
-      ).pipe(
-        tap((cards) => {
-          console.log("Hi there");
-          console.log(JSON.stringify(cards));
-          console.log("Bye");
-          this.cardsRemaining = cards;
-        })
-      );
+      
+      this.isGameRunning = false;
     }
     /*
      * Is the array empty? If it is, the next level 
@@ -91,6 +73,30 @@ export class MemoryShellComponent implements OnInit {
     }
   }
 
+  public startANewGame(){
+    /*
+       * Reset the current score
+       */
+    this.currentScore = 0;
+    /*
+     * Reset the level
+     */
+    this.level = 1;
+    /*
+     * Reset the number of cards
+     */
+    this.cardsForRound$ = this.cardsService.getNumberOfCards(
+      this.INITIAL_ROUND_CARD_NUMBER * this.level
+    ).pipe(
+      tap((cards) => {
+        console.log("Hi there");
+        console.log(JSON.stringify(cards));
+        console.log("Bye");
+        this.cardsRemaining = cards;
+      })
+    );  
+    this.isGameRunning = true;
+  }
 
   public incrementLevel(){
     this.level++;

@@ -8,6 +8,7 @@ import { MemoryShellComponent } from './memory-shell/memory-shell.component';
 import { MemoryCardComponent } from './memory-card/memory-card.component';
 import { MemoryCorridorComponent } from './memory-corridor/memory-corridor.component';
 import { ScoreComponent } from './score/score.component';
+import { GameOverComponent } from './game-over/game-over.component';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { ScoreComponent } from './score/score.component';
     MemoryShellComponent,
     MemoryCardComponent,
     MemoryCorridorComponent,
-    ScoreComponent
+    ScoreComponent,
+    GameOverComponent
   ],
   imports: [
     BrowserModule,

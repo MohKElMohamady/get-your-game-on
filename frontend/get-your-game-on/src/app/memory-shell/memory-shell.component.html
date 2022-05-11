@@ -1,2 +1,3 @@
 <score [currentScore]="currentScore" [bestScore]="bestScore" [level]="level"></score>
-<memory-corridor [cards]="(cardsForRound$ | async)" (selectedCard)="selectCard($event)"></memory-corridor>
+<memory-corridor *ngIf="isGameRunning" [cards]="(cardsForRound$ | async)" (selectedCard)="selectCard($event)"></memory-corridor>
+<game-over *ngIf="!isGameRunning" (startANewGame)="startANewGame()"></game-over>
