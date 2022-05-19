@@ -39,7 +39,7 @@ export class MemoryShellComponent implements OnInit {
   }
   
   public selectCard(selectedCard : Card){
-    console.log("Ad Victoria");
+    console.log("Ad Victorium");
     console.log(selectedCard);
     if(this.cardsRemaining.includes(selectedCard)){
       console.log(`Found the card! Time to remove the card from the deck`);
